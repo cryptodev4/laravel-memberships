@@ -12,7 +12,7 @@
         "subscription"
     ],
     "license": "MIT",
-    "homepage": "https://cryptodev4.com",
+    "homepage": "https://github.com/cryptodev4/laravel-subscriptions",
     "support": {
         "email": "cryptodev100972m@gmail.com",
         "issues": "https://github.com/cryptodev4/laravel-subscriptions/issues",
@@ -22,14 +22,8 @@
     "authors": [
         {
             "name": "Johan Cabeza",
-            "homepage": "https://cryptodev4.com",
+            "homepage": "https://github.com/cryptodev4/laravel-subscriptions",
             "email": "cryptodev100972m@gmail.com"
-        },
-        {
-            "name": "Abdelrahman Omran",
-            "homepage": "https://omranic.com",
-            "email": "me@omranic.com",
-            "role": "Project Lead"
         },
         {
             "name": "The Generous Laravel Community",
