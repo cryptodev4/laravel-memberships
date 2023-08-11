@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace CryptoDev4\Subscriptions\Providers;
 
-use CryptoDev4\Subscriptions\Models\Plan;
 use Illuminate\Support\ServiceProvider;
-use CryptoDev4\Subscriptions\Models\PlanFeature;
-use CryptoDev4\Subscriptions\Models\PlanSubscription;
-use CryptoDev4\Subscriptions\Models\PlanSubscriptionUsage;
 use CryptoDev4\Subscriptions\Console\Commands\MigrateCommand;
 use CryptoDev4\Subscriptions\Console\Commands\PublishCommand;
 use CryptoDev4\Subscriptions\Console\Commands\RollbackCommand;
@@ -35,10 +31,21 @@ class SubscriptionsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(realpath(__DIR__.'/../../config/config.php'), 'subscriptions');
+        // 
+        $this->mergeConfigFrom(realpath(__DIR__.'/../../config/subscription.php'), 'subscriptions');
 
+        // 
+        $this->loadMigrations();
+        
         // Register console commands
         $this->commands($this->commands);
+    }
+
+    public function loadMigrations()
+    {
+        if (config('subscriptions.autoload_migrations')) {
+            $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+        }   
     }
 
 
@@ -50,10 +57,11 @@ class SubscriptionsServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $publishTag = $this->_packageTag;
+
         // Publish Resources
         
         $this->publishes([
-            __DIR__.'/config/config.php' => config_path('subscriptions.php'),
+            __DIR__.'/config/subscriptions.php' => config_path('subscriptions.php'),
         ], $publishTag.'-config');
 
         $this->publishes([
