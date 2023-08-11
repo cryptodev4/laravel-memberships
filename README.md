@@ -23,7 +23,7 @@
 
 1. Install the package via composer:
     ```shell
-    composer require rinvex/laravel-subscriptions
+    composer require cryptodev4/laravel-memberships
     ```
 
 2. Publish resources (migrations and config files):
