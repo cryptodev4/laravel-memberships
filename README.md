@@ -64,7 +64,7 @@ That's it, we only have to use that trait in our User model! Now your users may 
 ### Create a Plan
 
 ```php
-$plan = app('cryptodev4.subscriptions.plan')->create([
+$plan = Plan::create([
     'name' => 'Pro',
     'description' => 'Pro plan',
     'price' => 9.99,
@@ -91,7 +91,7 @@ $plan->features()->saveMany([
 You can query the plan for further details, using the intuitive API as follows:
 
 ```php
-$plan = app('cryptodev4.subscriptions.plan')->find(1);
+$plan = Plan::find(1);
 
 // Get all plan features                
 $plan->features;
@@ -120,10 +120,10 @@ Say you want to show the value of the feature _pictures_per_listing_ from above.
 $amountOfPictures = $plan->getFeatureBySlug('pictures_per_listing')->value;
 
 // Query the feature itself directly
-$amountOfPictures = app('cryptodev4.subscriptions.plan_feature')->where('slug', 'pictures_per_listing')->first()->value;
+$amountOfPictures = PlanFeature::where('slug', 'pictures_per_listing')->first()->value;
 
 // Get feature value through the subscription instance
-$amountOfPictures = app('cryptodev4.subscriptions.plan_subscription')->find(1)->getFeatureValue('pictures_per_listing');
+$amountOfPictures = PlanSubscription::find(1)->getFeatureValue('pictures_per_listing');
 ```
 
 ### Create a Subscription
@@ -132,7 +132,7 @@ You can subscribe a user to a plan by using the `newSubscription()` function ava
 
 ```php
 $user = User::find(1);
-$plan = app('cryptodev4.subscriptions.plan')->find(1);
+$plan = Plan::find(1);
 
 $user->newPlanSubscription('main', $plan);
 ```
@@ -144,8 +144,8 @@ The first argument passed to `newSubscription` method should be the title of the
 You can change subscription plan easily as follows:
 
 ```php
-$plan = app('cryptodev4.subscriptions.plan')->find(2);
-$subscription = app('cryptodev4.subscriptions.plan_subscription')->find(1);
+$plan = Plan::find(2);
+$subscription = PlanSubscription::find(1);
 
 // Change subscription plan
 $subscription->changePlan($plan);
@@ -159,7 +159,7 @@ Plan features are great for fine-tuning subscriptions, you can top-up certain fe
 
 ```php
 // Find plan feature
-$feature = app('cryptodev4.subscriptions.plan_feature')->where('name', 'listing_duration_days')->first();
+$feature = PlanFeature::where('name', 'listing_duration_days')->first();
 
 // Get feature reset date
 $feature->getResetDate(new \Carbon\Carbon());
@@ -271,23 +271,23 @@ $user->planSubscription('main')->cancel(true);
 
 ```php
 // Get subscriptions by plan
-$subscriptions = app('cryptodev4.subscriptions.plan_subscription')->byPlanId($plan_id)->get();
+$subscriptions = PlanSubcription::byPlanId($plan_id)->get();
 
 // Get bookings of the given user
 $user = \App\Models\User::find(1);
-$bookingsOfSubscriber = app('cryptodev4.subscriptions.plan_subscription')->ofSubscriber($user)->get(); 
+$bookingsOfSubscriber = PlanSubcription::ofSubscriber($user)->get(); 
 
 // Get subscriptions with trial ending in 3 days
-$subscriptions = app('cryptodev4.subscriptions.plan_subscription')->findEndingTrial(3)->get();
+$subscriptions = PlanSubcription::findEndingTrial(3)->get();
 
 // Get subscriptions with ended trial
-$subscriptions = app('cryptodev4.subscriptions.plan_subscription')->findEndedTrial()->get();
+$subscriptions = PlanSubcription::findEndedTrial()->get();
 
 // Get subscriptions with period ending in 3 days
-$subscriptions = app('cryptodev4.subscriptions.plan_subscription')->findEndingPeriod(3)->get();
+$subscriptions = PlanSubcription::findEndingPeriod(3)->get();
 
 // Get subscriptions with ended period
-$subscriptions = app('cryptodev4.subscriptions.plan_subscription')->findEndedPeriod()->get();
+$subscriptions = PlanSubcription::findEndedPeriod()->get();
 ```
 
 ### Models
