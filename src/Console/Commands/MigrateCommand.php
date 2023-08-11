@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Subscriptions\Console\Commands;
+namespace CryptoDev4\Subscriptions\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -13,14 +13,14 @@ class MigrateCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'rinvex:migrate:subscriptions {--f|force : Force the operation to run when in production.}';
+    protected $signature = 'cryptodev4:migrate:subscriptions {--f|force : Force the operation to run when in production.}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Migrate Rinvex Subscriptions Tables.';
+    protected $description = 'Migrate Laravel Subscriptions Tables.';
 
     /**
      * Execute the console command.
@@ -31,9 +31,9 @@ class MigrateCommand extends Command
     {
         $this->alert($this->description);
 
-        $path = config('rinvex.subscriptions.autoload_migrations') ?
-            'vendor/rinvex/laravel-subscriptions/database/migrations' :
-            'database/migrations/rinvex/laravel-subscriptions';
+        $path = config('cryptodev4.subscriptions.autoload_migrations') ?
+            'vendor/cryptodev4/laravel-subscriptions/database/migrations' :
+            'database/migrations/cryptodev4/laravel-subscriptions';
 
         if (file_exists($path)) {
             $this->call('migrate', [
@@ -42,7 +42,7 @@ class MigrateCommand extends Command
                 '--force' => $this->option('force'),
             ]);
         } else {
-            $this->warn('No migrations found! Consider publish them first: <fg=green>php artisan rinvex:publish:subscriptions</>');
+            $this->warn('No migrations found! Consider publish them first: <fg=green>php artisan cryptodev4:publish:subscriptions</>');
         }
 
         $this->line('');
