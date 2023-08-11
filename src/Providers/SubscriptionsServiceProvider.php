@@ -6,7 +6,6 @@ namespace CryptoDev4\Subscriptions\Providers;
 
 use CryptoDev4\Subscriptions\Models\Plan;
 use Illuminate\Support\ServiceProvider;
-use CryptoDev4\Support\Traits\ConsoleTools;
 use CryptoDev4\Subscriptions\Models\PlanFeature;
 use CryptoDev4\Subscriptions\Models\PlanSubscription;
 use CryptoDev4\Subscriptions\Models\PlanSubscriptionUsage;
@@ -16,8 +15,6 @@ use CryptoDev4\Subscriptions\Console\Commands\RollbackCommand;
 
 class SubscriptionsServiceProvider extends ServiceProvider
 {
-    use ConsoleTools;
-
     /**
      * The commands to be registered.
      *
