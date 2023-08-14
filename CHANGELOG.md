@@ -110,7 +110,7 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 - Require PHP 7.2 & Laravel 5.8
 
 ## [v1.0.2] - 2018-12-30
-- Rinvex\Subscriptions\Services\Period: adding interval received as parameter in constructor to property ->interval
+- Rinvex\LaravelSubscriptions\Services\Period: adding interval received as parameter in constructor to property ->interval
 
 ## [v1.0.1] - 2018-12-22
 - Update composer dependencies

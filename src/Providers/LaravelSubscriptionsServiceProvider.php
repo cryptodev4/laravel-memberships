@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace CryptoDev4\Subscriptions\Providers;
+namespace CryptoDev4\LaravelSubscriptions\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use CryptoDev4\Subscriptions\Console\Commands\MigrateCommand;
-use CryptoDev4\Subscriptions\Console\Commands\PublishCommand;
-use CryptoDev4\Subscriptions\Console\Commands\RollbackCommand;
+use CryptoDev4\LaravelSubscriptions\Console\Commands\MigrateCommand;
+use CryptoDev4\LaravelSubscriptions\Console\Commands\PublishCommand;
+use CryptoDev4\LaravelSubscriptions\Console\Commands\RollbackCommand;
 
-class SubscriptionsServiceProvider extends ServiceProvider
+class LaravelSubscriptionsServiceProvider extends ServiceProvider
 {
-    private $_packageTag = 'cryptodev4/laravel-subscriptions';
+    private $_packageTag = 'laravel-subscriptions';
 
     /**
      * The commands to be registered.
@@ -31,10 +31,10 @@ class SubscriptionsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // 
-        $this->mergeConfigFrom(realpath(__DIR__.'/../../config/subscription.php'), 'subscriptions');
+        
+        $this->mergeConfigFrom(__DIR__.'/../../config/laravel-subscriptions.php', 'config.laravel-subscriptions');
 
-        // 
+        
         $this->loadMigrations();
         
         // Register console commands
@@ -61,11 +61,11 @@ class SubscriptionsServiceProvider extends ServiceProvider
         // Publish Resources
         
         $this->publishes([
-            __DIR__.'/config/subscriptions.php' => config_path('subscriptions.php'),
+            __DIR__.'/../../config/laravel-subscriptions.php' => config_path('laravel-subscriptions.php'),
         ], $publishTag.'-config');
 
         $this->publishes([
-            __DIR__.'/database/migrations' => database_path('migrations'),
+            __DIR__.'/../../database/migrations' => database_path('migrations/laravel-subscriptions'),
         ], $publishTag.'-migrations');
     }
 }

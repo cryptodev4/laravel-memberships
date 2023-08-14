@@ -46,12 +46,12 @@
     },
     "autoload": {
         "psr-4": {
-            "CryptoDev4\\Subscriptions\\": "src"
+            "CryptoDev4\\LaravelSubscriptions\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "CryptoDev4\\Subscriptions\\Tests\\": "tests"
+            "CryptoDev4\\LaravelSubscriptions\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -65,7 +65,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "CryptoDev4\\Subscriptions\\Providers\\SubscriptionsServiceProvider"
+                "CryptoDev4\\LaravelSubscriptions\\Providers\\SubscriptionsServiceProvider"
             ]
         }
     },

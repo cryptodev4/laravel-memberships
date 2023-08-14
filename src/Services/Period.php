@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CryptoDev4\Subscriptions\Services;
+namespace CryptoDev4\LaravelSubscriptions\Services;
 
 use Carbon\Carbon;
 

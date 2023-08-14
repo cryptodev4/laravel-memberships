@@ -14,7 +14,7 @@ class CreatePlanFeaturesTable extends Migration
      */
     public function up(): void
     {
-        Schema::create(config('cryptodev4.subscriptions.tables.plan_features'), function (Blueprint $table) {
+        Schema::create(config('laravel-subscriptions.tables.plan_features'), function (Blueprint $table) {
             // Columns
             $table->increments('id');
             $table->integer('plan_id')->unsigned();
@@ -30,7 +30,7 @@ class CreatePlanFeaturesTable extends Migration
 
             // Indexes
             $table->unique(['plan_id', 'slug']);
-            $table->foreign('plan_id')->references('id')->on(config('cryptodev4.subscriptions.tables.plans'))
+            $table->foreign('plan_id')->references('id')->on(config('laravel-subscriptions.tables.plans'))
                   ->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -42,6 +42,6 @@ class CreatePlanFeaturesTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(config('cryptodev4.subscriptions.tables.plan_features'));
+        Schema::dropIfExists(config('laravel-subscriptions.tables.plan_features'));
     }
 }

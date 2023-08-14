@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CryptoDev4\Subscriptions\Traits;
+namespace CryptoDev4\LaravelSubscriptions\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,7 +16,7 @@ trait BelongsToPlan
      */
     public function plan(): BelongsTo
     {
-        return $this->belongsTo(config('cryptodev4.subscriptions.models.plan'), 'plan_id', 'id', 'plan');
+        return $this->belongsTo(config('cryptodev4.laravel-subscriptions.models.plan'), 'plan_id', 'id', 'plan');
     }
 
     /**

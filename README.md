@@ -43,12 +43,12 @@
 
 ### Add Subscriptions to User model
 
-**Laravel Subscriptions** has been specially made for Eloquent and simplicity has been taken very serious as in any other Laravel related aspect. To add Subscription functionality to your User model just use the `\CryptoDev4\Subscriptions\Traits\HasPlanSubscriptions` trait like this:
+**Laravel Subscriptions** has been specially made for Eloquent and simplicity has been taken very serious as in any other Laravel related aspect. To add Subscription functionality to your User model just use the `\CryptoDev4\LaravelSubscriptions\Traits\HasPlanSubscriptions` trait like this:
 
 ```php
 namespace App\Models;
 
-use CryptoDev4\Subscriptions\Traits\HasPlanSubscriptions;
+use CryptoDev4\LaravelSubscriptions\Traits\HasPlanSubscriptions;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -295,10 +295,10 @@ $subscriptions = PlanSubcription::findEndedPeriod()->get();
 **CryptoDev4 Subscriptions** uses 4 models:
 
 ```php
-CryptoDev4\Subscriptions\Models\Plan;
-CryptoDev4\Subscriptions\Models\PlanFeature;
-CryptoDev4\Subscriptions\Models\PlanSubscription;
-CryptoDev4\Subscriptions\Models\PlanSubscriptionUsage;
+CryptoDev4\LaravelSubscriptions\Models\Plan;
+CryptoDev4\LaravelSubscriptions\Models\PlanFeature;
+CryptoDev4\LaravelSubscriptions\Models\PlanSubscription;
+CryptoDev4\LaravelSubscriptions\Models\PlanSubscriptionUsage;
 ```
 
 
