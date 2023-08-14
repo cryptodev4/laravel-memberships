@@ -65,7 +65,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "CryptoDev4\\LaravelSubscriptions\\Providers\\SubscriptionsServiceProvider"
+                "CryptoDev4\\LaravelSubscriptions\\Providers\\LaravelSubscriptionsServiceProvider"
             ]
         }
     },
