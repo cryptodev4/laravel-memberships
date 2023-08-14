@@ -14,12 +14,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Spatie\Sluggable\HasSlug;
 
 /**
  * CryptoDev4\LaravelSubscriptions\Models\Plan.
  *
  * @property int                 $id
- * @property string              $slug
  * @property array               $name
  * @property array               $description
  * @property bool                $is_active
@@ -61,7 +61,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|\CryptoDev4\LaravelSubscriptions\Models\Plan whereProrateExtendDue($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\CryptoDev4\LaravelSubscriptions\Models\Plan whereProratePeriod($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\CryptoDev4\LaravelSubscriptions\Models\Plan whereSignupFee($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\CryptoDev4\LaravelSubscriptions\Models\Plan whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\CryptoDev4\LaravelSubscriptions\Models\Plan whereSortOrder($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\CryptoDev4\LaravelSubscriptions\Models\Plan whereTrialInterval($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\CryptoDev4\LaravelSubscriptions\Models\Plan whereTrialPeriod($value)
@@ -70,6 +69,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class Plan extends Model
 {
+    // use HasSlug;
     use HasFactory;
     use SoftDeletes;
     // use SortableTrait;
@@ -80,7 +80,7 @@ class Plan extends Model
      * {@inheritdoc}
      */
     protected $fillable = [
-        'slug',
+        // 'slug',
         'name',
         'description',
         'is_active',
@@ -104,7 +104,7 @@ class Plan extends Model
      * {@inheritdoc}
      */
     protected $casts = [
-        'slug' => 'string',
+        // 'slug' => 'string',
         'is_active' => 'boolean',
         'price' => 'float',
         'signup_fee' => 'float',
@@ -174,7 +174,7 @@ class Plan extends Model
     {
         $this->setTable(config('cryptodev4.laravel-subscriptions.tables.plans'));
         $this->rules = [
-            'slug' => 'required|alpha_dash|max:150|unique:'.config('cryptodev4.laravel-subscriptions.tables.plans').',slug',
+            // 'slug' => 'required|alpha_dash|max:150|unique:'.config('cryptodev4.laravel-subscriptions.tables.plans').',slug',
             'name' => 'required|string|strip_tags|max:150',
             'description' => 'nullable|string|max:32768',
             'is_active' => 'sometimes|boolean',
@@ -280,10 +280,10 @@ class Plan extends Model
      *
      * @return \CryptoDev4\LaravelSubscriptions\Models\PlanFeature|null
      */
-    public function getFeatureBySlug(string $featureSlug): ?PlanFeature
-    {
-        return $this->features()->where('slug', $featureSlug)->first();
-    }
+    // public function getFeatureBySlug(string $featureSlug): ?PlanFeature
+    // {
+    //     return $this->features()->where('slug', $featureSlug)->first();
+    // }
 
     /**
      * Activate the plan.
